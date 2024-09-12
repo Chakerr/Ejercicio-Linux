@@ -11,14 +11,14 @@ buscar_archivo() {
         
         if grep -q "$numero_buscar" "$usb_mount_point/$search_file"; then
             echo "El número $numero_buscar fue encontrado en el archivo."
-            return 0  
+            return 0 
         else
             echo "El número $numero_buscar NO fue encontrado en el archivo."
-            return 1  
+            return 1 
         fi
     else
         echo "Archivo $search_file no encontrado en el dispositivo USB."
-        return 1  
+        return 1
     fi
 }
 
@@ -31,9 +31,10 @@ while true; do
             buscar_archivo
             if [ $? -eq 0 ]; then
                 echo "Proceso terminado: archivo y número encontrados."
+                ./rama.sh  
                 break  
             fi
-            sleep 2 
+            sleep 2  
         done
 
         break  
@@ -42,6 +43,5 @@ while true; do
     fi
     sleep 2
 done
-
 
 
