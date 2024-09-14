@@ -15,7 +15,7 @@ else
 fi
 
 # Definir variables
-SYMLINK_PATH="/home/mario-palencia/QUIZ/A/B/E/config2.html"   # Archivo fuente
+SYMLINK_PATH="/home/mario/QUIZ/A/B/E/config2.html"           # Archivo fuente
 WEB_PATH="/var/www/html/config2.html"                        # Destino en Apache
 INDEX_HTML_PATH="/var/www/html/index.html"                   # Archivo index de Apache
 
@@ -40,16 +40,16 @@ fi
 sudo systemctl reload apache2
 
 # Ruta del archivo local
-archivo_local="/home/mario-palencia/QUIZ/A/B/E/config2.html"  # Añadido la barra inicial
+archivo_local="/home/mario/QUIZ/A/B/E/config2.html"  # Añadido la barra inicial
 
 # Dirección del servidor remoto (usuario@servidor)
-servidor_remoto="mario@192.168.1.10"
+servidor_remoto="mario@ip"
 
 # Ruta de destino en la máquina remota
 ruta_remota="/home/mario"
 
 # Definir la contraseña para sshpass
-PASSWORD="mario08"
+PASSWORD="contraseña"
 
 # Usar sshpass para enviar el archivo sin pedir contraseña
 sshpass -p "$PASSWORD" scp "$archivo_local" "$servidor_remoto:$ruta_remota"
