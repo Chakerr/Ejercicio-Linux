@@ -15,6 +15,14 @@ El script debe:
 Si el código es válido, el script creará la siguiente estructura de directorios:
 
 ```plaintext
+A/
+├── B/
+│   ├── E/
+│   │   └── G/
+│   └── F/
+├── C/
+└── D/
+    └── H/
 
 ```
 
@@ -70,3 +78,13 @@ Finalmente, el servidor `Apache 1` (cliente) enviará el enlace simbólico y la 
 ## Contribuciones
 
 Si deseas mejorar o contribuir a este proyecto, puedes crear una rama en el repositorio, realizar los cambios necesarios y enviar un pull request para su revisión.
+
+## Créditos
+
+Este proyecto fue desarrollado con la ayuda de:
+
+- [MarioPG6](https://github.com/MarioPG6)
+
+
+
+
