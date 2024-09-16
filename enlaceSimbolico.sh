@@ -9,6 +9,10 @@ enlace_simbolico=/Ruta_donde_se_guarda_el_enlace
 # Crear el enlace simbólico
 ln -s "$archivo_fuente" "$enlace_simbolico"
 
+# Actualiza el arbol
+/home/mario-palencia/QUIZ/pagina.sh
+echo "HTML generado"
+
 # Verificar si el enlace simbólico se creó correctamente
 if [ -L "$enlace_simbolico" ]; then
   echo "Enlace simbólico creado exitosamente: $enlace_simbolico -> $archivo_fuente"
