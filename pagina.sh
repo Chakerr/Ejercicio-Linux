@@ -1,27 +1,29 @@
 #!/bin/bash
 
 # Datos
-name="Luis"
-degree="Ingeniero"
+name="Luis Gabriel Romero Castro"
+degree="Ingenieria de sistemas"
 date_today=$(date +"%d/%m/%Y")
-directory_path="$(pwd)"  # Directorio actual donde se ejecuta el script
 
 # Especifica la ruta donde se creará el HTML
-output_directory="/home/chaker/Documentos/Ejercicio-Linux-main/A/D/H"
+output_directory="/home/chaker/QUIZ/A/D/H"
 output_file="$output_directory/config2.html"
 
 # Crea el directorio si no existe
 mkdir -p "$output_directory"
 
-config_file="$directory_path/A/B/G/config1.txt"
+# Archivo de configuración
+config_file="/home/chaker/QUIZ/A/B/G/config1.txt"
 
+# Contenido del archivo de configuración
 if [ -f "$config_file" ]; then
 	config_content=$(cat "$config_file")
 else 
 	config_content="El archivo de configuración no existe."
 fi
 
-directory_tree=$(tree "/home/chaker/Documentos/Ejercicio-Linux-main/")
+# Árbol de directorios actualizado
+directory_tree=$(tree "/home/chaker/QUIZ/A")
 
 # Crear el documento HTML en la carpeta especificada
 cat <<EOF > "$output_file"
@@ -56,4 +58,4 @@ cat <<EOF > "$output_file"
 </html>
 EOF
 
-echo "El archivo HTML ha sido creado exitosamente en $output_directory."
+

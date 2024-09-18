@@ -1,65 +1,73 @@
 #!/bin/bash
 
-# Verificar el estado de Apache2
-if systemctl is-active --quiet apache2; then
-    echo "Apache2 está activo y funcionando."
-else
+# Verificar y asegurar que Apache2 está activo localmente
+if ! systemctl is-active --quiet apache2; then
     echo "Apache2 no está activo. Iniciando Apache2..."
     sudo systemctl start apache2
-    if systemctl is-active --quiet apache2; then
-        echo "Apache2 se inició correctamente."
-    else
-        echo "Hubo un problema al intentar iniciar Apache2."
+    if ! systemctl is-active --quiet apache2; then
+        echo "Hubo un problema al intentar iniciar Apache2 en la máquina local."
         exit 1
     fi
+    echo "Apache2 se inició correctamente en la máquina local."
+else
+    echo "Apache2 está activo y funcionando en la máquina local."
 fi
 
 # Definir variables
-SYMLINK_PATH="/home/mario/QUIZ/A/B/E/config2.html"           # Archivo fuente
-WEB_PATH="/var/www/html/config2.html"                        # Destino en Apache
-INDEX_HTML_PATH="/var/www/html/index.html"                   # Archivo index de Apache
+archivoFuente="/home/chaker/QUIZ/A/B/E/config2.html"  # Archivo fuente local
+apache="/var/www/html/config2.html"                           # Destino en Apache local
+index="/var/www/html/index.html"                              # Archivo index de Apache local
+servidor_remoto="mario-palencia@192.168.244.129"                          # Dirección del servidor remoto
+ruta_remota="/home/mario-palencia/config2.html"                        # Ruta completa del archivo en la máquina remota
+PASSWORD="Mario2004"                                          # Contraseña para sshpass
 
-# Verificar si el enlace simbólico ya existe en el directorio de Apache
-if [ ! -L "$WEB_PATH" ]; then
+# Verificar y crear el enlace simbólico si no existe en la máquina local
+if [ ! -L "$apache" ]; then
     echo "Creando el enlace simbólico en /var/www/html/"
-    sudo ln -s "$SYMLINK_PATH" "$WEB_PATH"
+    sudo ln -s "$archivoFuente" "$apache"
 else
     echo "El enlace simbólico ya existe en /var/www/html/"
 fi
 
-# Sobrescribir el contenido de index.html con config2.html
-if [ -f "$SYMLINK_PATH" ]; then
-    sudo cp "$SYMLINK_PATH" "$INDEX_HTML_PATH"
-    echo "Contenido de $SYMLINK_PATH copiado correctamente a $INDEX_HTML_PATH"
+# Copiar el contenido de config2.html a index.html en la máquina local
+if [ -f "$archivoFuente" ]; then
+    sudo cp "$archivoFuente" "$index"
+    echo "Contenido de $archivoFuente copiado correctamente a $index en la máquina local."
 else
-    echo "El archivo $SYMLINK_PATH no existe o no es válido."
+    echo "El archivo $archivoFuente no existe o no es válido en la máquina local."
     exit 1
 fi
 
-# Recargar Apache2 para asegurar que los cambios sean visibles
+# Recargar Apache2 en la máquina local
 sudo systemctl reload apache2
 
-# Ruta del archivo local
-archivo_local="/home/mario/QUIZ/A/B/E/config2.html"  # Añadido la barra inicial
+# Transferir el archivo a la máquina remota usando sshpass
+if sshpass -p "$PASSWORD" scp "$archivoFuente" "$servidor_remoto:$ruta_remota"; then
+    echo "Archivo enviado con éxito a la máquina remota."
+    
+    # Verificar si Apache2 está activo en la máquina remota
+    if sshpass -p "$PASSWORD" ssh "$servidor_remoto" "systemctl is-active --quiet apache2"; then
+        echo "Apache2 está activo en la máquina remota."
+    else
+        echo "Apache2 no está activo en la máquina remota. Iniciándolo..."
+        sshpass -p "$PASSWORD" ssh "$servidor_remoto" "sudo systemctl start apache2"
+        if sshpass -p "$PASSWORD" ssh "$servidor_remoto" "systemctl is-active --quiet apache2"; then
+            echo "Apache2 se inició correctamente en la máquina remota."
+        else
+            echo "No se pudo iniciar Apache2 en la máquina remota."
+            exit 1
+        fi
+    fi
+    
+    # Copiar el contenido de config2.html a index.html en la máquina remota sin pedir contraseña
+    sshpass -p "$PASSWORD" ssh "$servidor_remoto" "sudo cp $ruta_remota /var/www/html/index.html && sudo systemctl reload apache2"
+    echo "Contenido de config2.html copiado correctamente a index.html en la máquina remota."
 
-# Dirección del servidor remoto (usuario@servidor)
-servidor_remoto="mario@ip"
-
-# Ruta de destino en la máquina remota
-ruta_remota="/home/mario"
-
-# Definir la contraseña para sshpass
-PASSWORD="contraseña"
-
-# Usar sshpass para enviar el archivo sin pedir contraseña
-sshpass -p "$PASSWORD" scp "$archivo_local" "$servidor_remoto:$ruta_remota"
-
-# Verifica si la transferencia fue exitosa
-if [ $? -eq 0 ]; then
-  echo "Archivo enviado con éxito."
-  
-  # Abre la página local en el navegador predeterminado
-  xdg-open http://localhost
 else
-  echo "Hubo un error al enviar el archivo."
+    echo "Hubo un error al enviar el archivo a la máquina remota."
+    exit 1
 fi
+
+# Abrir la página web en el navegador de la máquina local
+xdg-open "http://192.168.244.129"
+echo "Página web abierta en la máquina local."

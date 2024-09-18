@@ -1,15 +1,16 @@
 #!/bin/bash
 
 # Eliminar y crear directorios
-rm -rf A
-mkdir -p A
-mkdir -p A/B A/C A/D
-mkdir -p A/B/E A/B/F A/B/G
-mkdir -p A/D/H
+rm -rf /home/chaker/QUIZ/A
+mkdir -p /home/chaker/QUIZ/A
+mkdir -p /home/chaker/QUIZ/A/B /home/chaker/QUIZ/A/C /home/chaker/QUIZ/A/D
+mkdir -p /home/chaker/QUIZ/A/B/E /home/chaker/QUIZ/A/B/F /home/chaker/QUIZ/A/B/G
+mkdir -p /home/chaker/QUIZ/A/D/H
+
 
 # Archivos de salida
-archivo_salida="A/B/G/config1.txt"
-archivo_html="A/D/H/config2.html"
+archivo_salida="/home/chaker/QUIZ/A/B/G/config1.txt"
+archivo_html="/home/chaker/QUIZ/A/D/H/config2.html"
 
 # Eliminar archivo de salida si existe
 if [ -f "$archivo_salida" ]; then
@@ -39,7 +40,9 @@ echo "Hora: $hora" >> "$archivo_salida"
 echo "El archivo $archivo_salida ha sido creado con éxito."
 
 # Texto a leer en voz alta
-texto_a_leer="La computadora tiene un procesador $procesador, una memoria RAM de $ram_total, su disco duro tiene una capacidad total de $disco_total. Esta información fue dada el día $fecha a las $hora."
+texto_a_leer="La computadora posee un procesador $procesador, una memoria RAM de $ram_total, 
+su disco duro tiene una capacidad total de $disco_total. Esta información fue suministrada el 
+día $fecha a las $hora."
 
 # Leer la información en voz alta
 espeak -a 400 -v es -s140 -p 50 "$texto_a_leer" --stdout | aplay

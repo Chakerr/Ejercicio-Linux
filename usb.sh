@@ -55,12 +55,12 @@ while true; do
         buscar_archivo
         if [ $? -eq 0 ]; then
             echo "Proceso terminado: archivo y número encontrados."
-            /home/chaker/Documentos/Ejercicio-Linux-main/especificaciones_pc.sh
-            /home/chaker/Documentos/Ejercicio-Linux-main/pagina.sh
-            /home/chaker/Documentos/Ejercicio-Linux-main/enlaceSimbolico.sh
-	        /home/chaker/Documentos/Ejercicio-Linux-main/enviarApache.sh
-            /home/chaker/Documentos/Ejercicio-Linux-main/encenderLedMayus.sh
-	        /home/chaker/Documentos/Ejercicio-Linux-main/enviarCorreo.sh
+            /home/chaker/QUIZ/especificaciones_pc.sh
+            /home/chaker/QUIZ/pagina.sh
+            /home/chaker/QUIZ/enlaceSimbolico.sh
+            /home/chaker/QUIZ/enviarApache.sh
+            /home/chaker/QUIZ/encenderLedMayus.sh
+            /home/chaker/QUIZ/enviarCorreo.sh
             break
         else
             echo "Finalizando bucle: archivo o número no encontrados."
@@ -72,7 +72,5 @@ while true; do
             usb_conectado=false
         fi
     fi
-    sleep 5 
+    sleep 5  
 done
-
-
