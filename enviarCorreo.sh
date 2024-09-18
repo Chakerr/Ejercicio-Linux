@@ -1,7 +1,7 @@
 {
-  echo "Subject: Quiz Linux"
-  echo "Mi nombre es luis gabriel romero castro y mi nota del quiz es 5.0"
-} | msmtp -a gmail luisgabrielromerocastro789@gmail.com
+  echo "Subject: Ejercicio Linux"
+  echo "Mi nombre es chaker"
+} | msmtp -a gmail Correo@gmail.com
 
 if [ $? -eq 0 ]; then
   echo "Mensaje enviado con éxito"
