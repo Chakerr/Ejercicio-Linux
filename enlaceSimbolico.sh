@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Ruta del archivo fuente
-archivo_fuente=/home/chaker/QUIZ/A/D/H/config2.html
+archivo_fuente=/home/chaker/Ejercicio-Linux/A/D/H/config2.html
 
 # Ruta del enlace simbólico
-enlace_simbolico=/home/chaker/QUIZ/A/B/E/config2.html
+enlace_simbolico=/home/chaker/Ejercicio-Linux/A/B/E/config2.html
 
 # Crear el enlace simbólico
 ln -s "$archivo_fuente" "$enlace_simbolico"
 
 # Actualiza el arbol
-/home/chaker/QUIZ/pagina.sh
+/home/chaker/Ejercicio-Linux/pagina.sh
 echo "HTML generado"
 
 # Verificar si el enlace simbólico se creó correctamente
