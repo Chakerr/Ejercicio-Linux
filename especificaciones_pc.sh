@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Eliminar y crear directorios
-rm -rf /home/chaker/QUIZ/A
-mkdir -p /home/chaker/QUIZ/A
-mkdir -p /home/chaker/QUIZ/A/B /home/chaker/QUIZ/A/C /home/chaker/QUIZ/A/D
-mkdir -p /home/chaker/QUIZ/A/B/E /home/chaker/QUIZ/A/B/F /home/chaker/QUIZ/A/B/G
-mkdir -p /home/chaker/QUIZ/A/D/H
+rm -rf /home/chaker/Ejercicio-Linux/A
+mkdir -p /home/chaker/Ejercicio-Linux/A
+mkdir -p /home/chaker/Ejercicio-Linux/A/B /home/chaker/Ejercicio-Linux/A/C /home/chaker/Ejercicio-Linux/A/D
+mkdir -p /home/chaker/Ejercicio-Linux/A/B/E /home/chaker/Ejercicio-Linux/A/B/F /home/chaker/Ejercicio-Linux/A/B/G
+mkdir -p /home/chaker/Ejercicio-Linux/A/D/H
 
 
 # Archivos de salida
-archivo_salida="/home/chaker/QUIZ/A/B/G/config1.txt"
-archivo_html="/home/chaker/QUIZ/A/D/H/config2.html"
+archivo_salida="/home/chaker/Ejercicio-Linux/A/B/G/config1.txt"
+archivo_html="/home/chaker/Ejercicio-Linux/A/D/H/config2.html"
 
 # Eliminar archivo de salida si existe
 if [ -f "$archivo_salida" ]; then
