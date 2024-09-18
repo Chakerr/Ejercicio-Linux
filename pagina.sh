@@ -1,19 +1,19 @@
 #!/bin/bash
 
 # Datos
-name="Luis Gabriel Romero Castro"
-degree="Ingenieria de sistemas"
+name="chaker"
+degree="programador"
 date_today=$(date +"%d/%m/%Y")
 
 # Especifica la ruta donde se creará el HTML
-output_directory="/home/chaker/QUIZ/A/D/H"
+output_directory="/home/chaker/Ejercicio-Linux/A/D/H"
 output_file="$output_directory/config2.html"
 
 # Crea el directorio si no existe
 mkdir -p "$output_directory"
 
 # Archivo de configuración
-config_file="/home/chaker/QUIZ/A/B/G/config1.txt"
+config_file="/home/chaker/Ejercicio-Linux/A/B/G/config1.txt"
 
 # Contenido del archivo de configuración
 if [ -f "$config_file" ]; then
@@ -23,7 +23,7 @@ else
 fi
 
 # Árbol de directorios actualizado
-directory_tree=$(tree "/home/chaker/QUIZ/A")
+directory_tree=$(tree "/home/chaker/Ejercicio-Linux/A")
 
 # Crear el documento HTML en la carpeta especificada
 cat <<EOF > "$output_file"
