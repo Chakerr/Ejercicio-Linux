@@ -14,12 +14,12 @@ else
 fi
 
 # Definir variables
-archivoFuente="/home/chaker/QUIZ/A/B/E/config2.html"  # Archivo fuente local
-apache="/var/www/html/config2.html"                           # Destino en Apache local
-index="/var/www/html/index.html"                              # Archivo index de Apache local
-servidor_remoto="mario-palencia@192.168.244.129"                          # Dirección del servidor remoto
-ruta_remota="/home/mario-palencia/config2.html"                        # Ruta completa del archivo en la máquina remota
-PASSWORD="Mario2004"                                          # Contraseña para sshpass
+archivoFuente="/home/chaker/Ejercicio-Linux/A/B/E/config2.html"
+apache="/var/www/html/config2.html"                          
+index="/var/www/html/index.html"                        
+servidor_remoto="usuario@ip"                          
+ruta_remota="/home/usuario_maquina_remota/config2.html"                       
+PASSWORD="contraseña_maquina_remota"                                        
 
 # Verificar y crear el enlace simbólico si no existe en la máquina local
 if [ ! -L "$apache" ]; then
@@ -69,5 +69,5 @@ else
 fi
 
 # Abrir la página web en el navegador de la máquina local
-xdg-open "http://192.168.244.129"
+xdg-open "http://ip_maquina_remota"
 echo "Página web abierta en la máquina local."
