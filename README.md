@@ -71,6 +71,7 @@ Finalmente, el servidor `Apache 1` (cliente) enviará el enlace simbólico y la 
 
 ## Notas
 
+- Para ejecutar siempre el programa en el bash rc ejecutar el siguiente comando 'sudo nano .bashrc' y colocar la ruta del archivo usb al final del codigo
 - Asegúrate de tener permisos de superusuario para ejecutar las operaciones de creación de archivos y directorios.
 - Verifica que los servidores Apache estén correctamente configurados y que `sshpass` esté instalado en ambos servidores.
 - Los archivos `config1` y `config2.html` contendrán información sensible del sistema, por lo que deben ser protegidos adecuadamente.
