@@ -1,6 +1,6 @@
 #!/bin/bash
 
-usb_buscar="058f:6387"
+usb_buscar="..." #Para saber el numero que identifica la USB se usa el siguiente comando: "sudo lsusb"
 usb_mount_point="/media/chaker/LUIS/inicio.txt"
 numero_buscar="024"
 
@@ -55,12 +55,12 @@ while true; do
         buscar_archivo
         if [ $? -eq 0 ]; then
             echo "Proceso terminado: archivo y número encontrados."
-            /home/chaker/QUIZ/especificaciones_pc.sh
-            /home/chaker/QUIZ/pagina.sh
-            /home/chaker/QUIZ/enlaceSimbolico.sh
-            /home/chaker/QUIZ/enviarApache.sh
-            /home/chaker/QUIZ/encenderLedMayus.sh
-            /home/chaker/QUIZ/enviarCorreo.sh
+            /home/chaker/Ejercicio-Linux/especificaciones_pc.sh
+            /home/chaker/Ejercicio-Linux/pagina.sh
+            /home/chaker/Ejercicio-Linux/enlaceSimbolico.sh
+            /home/chaker/Ejercicio-Linux/enviarApache.sh
+            /home/chaker/Ejercicio-Linux/encenderLedMayus.sh
+            /home/chaker/Ejercicio-Linux/enviarCorreo.sh
             break
         else
             echo "Finalizando bucle: archivo o número no encontrados."
